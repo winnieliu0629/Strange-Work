@@ -9,8 +9,8 @@ const Register = () => {
     const [usernameErrorMessage, setUsernameErrorMessage] = useState('');
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] = useState('');
-    const [setToken] = useOutletContext();
-    const [setIsLoggedIn] = useOutletContext();
+    const [token, setToken] = useOutletContext();
+    const [isLoggedIn, setIsLoggedIn] = useOutletContext();
 
     async function submitRegistration(e) {
         e.preventDefault();
@@ -36,7 +36,7 @@ const Register = () => {
         } else {
             localStorage.setItem('token', response.data.token)
             setToken(response.data.token)
-            setIsLoggedIn(true);
+            setIsLoggedIn(true)
         }
     }
 

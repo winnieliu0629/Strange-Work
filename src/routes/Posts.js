@@ -1,9 +1,9 @@
-import UserPost from "./UserPost";
-import GuestPost from "./GuestPost";
+import UserPost from "../components/UserPost";
+import GuestPost from "../components/GuestPost";
 import { useOutletContext } from "react-router-dom";
 
 const Posts = () => {
-    const [isLoggedIn] = useOutletContext();
+    const [isLoggedIn, setIsLoggedIn] = useOutletContext();
     if (isLoggedIn) {
         return <UserPost />;
     }

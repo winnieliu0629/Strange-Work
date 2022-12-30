@@ -6,7 +6,7 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
-    const [setIsLoggedIn] = useOutletContext();
+    const [isLoggedIn, setIsLoggedIn] = useOutletContext();
 
     async function submitRegistration(e) {
         e.preventDefault();

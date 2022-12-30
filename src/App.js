@@ -10,6 +10,9 @@ import Profile from "./routes/Profile";
 import Register from "./routes/Register";
 import Login from "./routes/Login";
 import ErrorPage from "./ErrorPage";
+import NewPost from './components/NewPost';
+import SendMessage from './components/SendMessage';
+import SinglePost from './components/SinglePost';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +29,10 @@ const router = createBrowserRouter([
         element: <Posts />,
       },
       {
+        path: "posts/:id",
+        element: <SinglePost />,
+      },
+      {
         path: "profile",
         element: <Profile />,
       },      {
@@ -35,6 +42,18 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "newPost",
+        element: <NewPost />,
+      },
+      {
+        path: "sendMessage",
+        element: <SendMessage />,
+      },
+      {
+        path: "singlePost",
+        element: <SinglePost />,
       },
     ],
   },

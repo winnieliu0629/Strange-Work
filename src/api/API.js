@@ -30,77 +30,49 @@ export async function fetchAllPost () {
     return result.data.posts;
 }
 
-export async function fetchSinlePost (postId) {
-    const response = await fetch(`${BASE_URL}/posts/${postId}`)
-    const result = await response.json();
-    return result.data.posts;
-}
-
-export async function userPost(user) {
+export async function userPost(token) {
     const response = await fetch(`${BASE_URL}/users/me`, {
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer TOKEN_STRING_HERE'
-        },
-        body: JSON.stringify(user)
+            'Authorization': `Bearer ${token}`
+        }
     })
     const result = await response.json();
+    console.log("get user data", result);
     return result.posts;
 }
 
-// export async function messagesToUser (messages) {
-//     const response = await fetch(`${BASE_URL}/users/me`, {
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authorization': 'Bearer TOKEN_STRING_HERE'
-//         },
-//         body: JSON.stringify(messages)
-//     })
-//     const result = await response.json();
-//     return result.messages;
-// }
+export async function userMessages (token) {
+    const response = await fetch(`${BASE_URL}/users/me`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    const result = await response.json();
+    return result.data;
+}
 
-// export async function messageFromUser (messages) {
-//     const response = await fetch(`${BASE_URL}/users/me`, {
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authorization': 'Bearer TOKEN_STRING_HERE'
-//         },
-//         body: JSON.stringify(messages)
-//     })
-//     const result = await response.json();
-//     return result.messages;
-// }
-
-// export async function messagesFromSinglePost (message, postId) {
-//     const response = await fetch(`${BASE_URL}/posts/${postId}/messages`, {
-//         method: "POST",
-//         headers: {
-//         'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(message)
-//     })
-//     const result = await response.json();
-//     return result.data.message;
-// }
-
-export async function sendMessage (message, postId) {
+export async function sendMessage (message, postId, token) {
     const response = await fetch(`${BASE_URL}/posts/${postId}/messages`, {
         method: "POST",
         headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(message)
     })
     const result = await response.json();
+    console.log(result)
     return result.data.message;
 }
 
-export async function addNewPost (post) {
+export async function addNewPost (post, token) {
     const response = await fetch(`${BASE_URL}/posts`, {
         method: "POST",
         headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(post)
     })
@@ -108,11 +80,13 @@ export async function addNewPost (post) {
     return result.data.post;
 }
 
-export async function editPost (post, postId) {
+export async function editPost (post, postId, token) {
+    console.log("post", post);
     const response = await fetch(`${BASE_URL}/posts/${postId}`, {
         method: "PATCH",
         headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(post)
     })
@@ -120,26 +94,16 @@ export async function editPost (post, postId) {
     return result.data.post;
 }
 
-export async function deletePost (postId) {
+export async function deletePost (postId, token) {
     const response = await fetch(`${BASE_URL}/posts/${postId}`, {
         method: "DELETE",
         headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
         }
     })
     const result = await response.json();
-    return result;
-//     try {
-//         const response = await fetch(`${BASE_URL}/posts/${postId}`, {
-//             method: "DELETE",
-//             headers: {
-//             'Content-Type': 'application/json'
-//             }
-//         })
-//         const result = await response.json();
-//         if (result.error) throw result.error;
-//         return;
-//     } catch (error) {
-//      console.error(`Trouble removing ${postId}!`, error);
-//     }
+    console.log("delete", result);
+    if (result.error) throw result.error;
+    return;
 }

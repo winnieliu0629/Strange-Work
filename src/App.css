@@ -51,10 +51,24 @@ input {
   padding: 10px 200px;
 }
 
+.createButton {
+  border: 1px solid royalblue;
+  color:royalblue;
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px 150px;
+}
+
 .loginButton {
   border: 1px solid royalblue;
   color:royalblue;
   background-color: white;
   border-radius: 4px;
   padding: 8px 80px;
+}
+
+.posts {
+  margin: 10px;
+  padding: 10px;
+ border: 1px solid black;
 }

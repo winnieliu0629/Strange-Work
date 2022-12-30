@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
+import { fetchAllPost } from "../api/API";
 
 export default function Root() {
     const [token, setToken] =useState(localStorage.getItem('token'));
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [posts, setPosts] = useState(localStorage.getItem('posts'));
 
     useEffect(() => {
         setToken(localStorage.getItem('token'))
@@ -12,10 +14,17 @@ export default function Root() {
     function logout() {
        localStorage.removeItem('token');
        setToken('');
-       setIsLoggedIn(false)
+       setIsLoggedIn(false);
     }
 
-    console.log(token);
+    useEffect(() => {
+        Promise.all([fetchAllPost()])
+        .then(([posts]) => {
+            setPosts(localStorage.setItem('posts', JSON.stringify(posts)))
+        })
+    }, []);
+
+
     return (
         <div>
             <header>
