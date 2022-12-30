@@ -25,7 +25,7 @@ const UserPost = () => {
     return (
         <div className="panel">
             <h1>Welcome {username}!</h1>
-            <button onClick={navigateAddNewPost}>Add New Post</button>
+            <button onClick={navigateAddNewPost} className="functionalButton">Add New Post</button>
             <UserPostList posts={posts} />
         </div>
     )

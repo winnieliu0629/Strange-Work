@@ -1,9 +1,9 @@
 const GuestPostList = ({ posts }) => {
     return (
-        <section className="Posts">
+        <section>
             {
                 posts.map(({ id, author, description, price, location, willDeliver, title })=> (
-                    <div key={id}>
+                    <div key={id} className="posts">
                         <h2>{title}</h2>
                         {description ? <h4>{description}</h4> : null}
                         {price ? <h4>Price: {price}</h4> : null}

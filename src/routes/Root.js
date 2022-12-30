@@ -35,7 +35,7 @@ export default function Root() {
                     {token ? <Link to="profile" className="linkStyle">Profile</Link> : null}
                     {token ? null : <Link to="register" className="linkStyle">Register</Link>}
                     {token ? null : <Link to="login" className="linkStyle">Login</Link>}
-                    {token ? <button onClick={logout}>Log Out</button> : null}
+                    {token ? <button onClick={logout} className="logoutButton">Log Out</button> : null}
                 </nav>
             </header>
             <main>

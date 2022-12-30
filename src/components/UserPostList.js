@@ -17,8 +17,8 @@ const UserPostList = ({ posts }) => {
         <section>
             {
                 posts.map(({ _id, author, description, price, location, title, isAuthor, willDeliver })=> (
-                    <div className="posts">
-                        <div key={_id} onClick={() => navigateSinglePost(_id, author, description, price, location, title, isAuthor)}>
+                    <div key={_id} className="posts">
+                        <div onClick={() => navigateSinglePost(_id, author, description, price, location, title, isAuthor)}>
                             <h2>{title}</h2>
                             {description ? <h4>Description: {description}</h4> : null}
                             {price ? <h4>Price: {price}</h4> : null}
@@ -27,7 +27,7 @@ const UserPostList = ({ posts }) => {
                             {willDeliver ? <h4>Willing to Deliver: Yes</h4> : <h4>Willing to Deliver: No</h4>}
                         </div>
                         <div>
-                            {author.username === username ? null : <button onClick={() => navigateSendMessage(_id, author, description, price, location, title, isAuthor)}>Send Message</button>}
+                            {author.username === username ? null : <button onClick={() => navigateSendMessage(_id, author, description, price, location, willDeliver, title, isAuthor)} className="functionalButton">Send Message</button>}
                         </div>
                     </div>
                 ))

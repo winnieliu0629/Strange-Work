@@ -1,3 +1,7 @@
+* {
+  font-family: 'Acme', sans-serif;
+}
+
 header {
   background-color: skyblue;
   height: 80px;
@@ -8,7 +12,7 @@ header {
 }
 
 .webName {
-  color:midnightblue;
+  color:navy;
 }
 
 .headerLink {
@@ -43,6 +47,10 @@ input {
   padding: 20px 200px 20px 10px;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .submitButton {
   border: 1px solid royalblue;
   color:royalblue;
@@ -59,6 +67,24 @@ input {
   padding: 10px 150px;
 }
 
+.messageButton {
+  border: 1px solid royalblue;
+  color:royalblue;
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px 130px;
+}
+
+.functionalButton {
+  border: 1px solid dimgray;
+  color:dimgray;
+  background-color: white;
+  border-radius: 4px;
+  padding: 8px 50px;
+  margin: 5px;
+  font-size: 15px;
+}
+
 .loginButton {
   border: 1px solid royalblue;
   color:royalblue;
@@ -67,8 +93,21 @@ input {
   padding: 8px 80px;
 }
 
+.logoutButton {
+  border: 1px solid black;
+  color:black;
+  background-color: skyblue;
+  border-radius: 4px;
+  font-size: 20px;
+}
+
 .posts {
+  width: 100vh;
   margin: 10px;
   padding: 10px;
- border: 1px solid black;
+  border: 1px solid black;
+}
+
+.sent {
+  color: orangered;
 }

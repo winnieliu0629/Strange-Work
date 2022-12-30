@@ -27,24 +27,23 @@ const Profile = () => {
 
     return (
         <div className="panel">
-            <h1>Welcome</h1>
             <h3>Messages to me:</h3>
             {
                 messageToUser?.map(({ _id, title, fromUser, content }) => (
-                    <div key={_id}>
+                    <div key={_id} className="posts">
                         <h2>From: {fromUser.username}</h2>
-                        <h4>{content}</h4>
-                        <h4>View my post: {title}</h4>
+                        <h4>Message: {content}</h4>
+                        <h4>From post: {title}</h4>
                     </div>
                 ))
             }
             <h3>Messages from me:</h3>
             {
                 messageFromUser?.map(({ _id, post, fromUser, content }) => (
-                    <div key={_id}>
+                    <div key={_id} className="posts">
                         <h2>From: {fromUser.username}</h2>
-                        <h4>{content}</h4>
-                        <h4>View my post: {post.title}</h4>
+                        <h4>Message: {content}</h4>
+                        <h4>From post: {post.title}</h4>
                     </div>))
             }
         </div>

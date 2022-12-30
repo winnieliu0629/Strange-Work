@@ -26,13 +26,15 @@ const SendMessage = () => {
     }
 
     return (
-        <section className="Post" key={_id}>
-            <h2>{title}</h2>
-            {description ? <h4>{description}</h4> : null}
-            {price ? <h4>Price: {price}</h4> : null}
-            {author ? <h4>Seller: {author.username}</h4> : null}
-            {location ? <h4>Location: {location}</h4> : null}
-            {willDeliver ? <h4>Willing to Deliver? Yes</h4> : <h4>Willing to Deliver? No</h4>}
+        <section key={_id}>
+            <div className="posts" >
+                <h2>{title}</h2>
+                {description ? <h4>{description}</h4> : null}
+                {price ? <h4>Price: {price}</h4> : null}
+                {author ? <h4>Seller: {author.username}</h4> : null}
+                {location ? <h4>Location: {location}</h4> : null}
+                {willDeliver ? <h4>Willing to Deliver? Yes</h4> : <h4>Willing to Deliver? No</h4>}
+            </div>
             {
                 sentMessage ? 
                     <form onSubmit={submitMessage} className="panel">
@@ -43,9 +45,9 @@ const SendMessage = () => {
                         placeholder="content"
                         onChange={(e) => setContent(e.target.value)}
                         />
-                        <button type="submit" className="createButton">Send Message</button>
+                        <button type="submit" className="messageButton">Send Message</button>
                     </form> 
-                : <h4>Message sent to {author.username}!</h4>
+                : <h4 className="sent">Message sent to {author.username}!</h4>
             }
         </section>
     )
